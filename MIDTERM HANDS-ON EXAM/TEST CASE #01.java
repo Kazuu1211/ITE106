@@ -1,68 +1,46 @@
 import java.util.Scanner;
 
-public class GradeCalculator {
-
+public class Main {
     public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
-        
-        System.out.print("Enter the number of students: ");
-        int numStudents = input.nextInt();
-        
-        double classTotal = 0; 
-        double highestScore = 0;
-        double lowestScore = 100; 
+        Scanner sc = new Scanner(System.in);
 
-        for (int i = 1; i <= numStudents; i++) {
-            input.nextLine(); 
-            System.out.print("Enter the name of student " + i + ": ");
-            String studentName = input.nextLine();
-            
-            System.out.print("Enter the number of assignments for " + studentName + ": ");
-            int numAssignments = input.nextInt();
-            
+        System.out.print("Enter the number of students: ");
+        int StudentNum = sc.nextInt();
+        sc.nextLine();
+
+        for (int i = 0; i < StudentNum; i++) {
+            System.out.print("Enter the name of student " + (i + 1) + ": ");
+            String StudentName = sc.nextLine();
+
+            System.out.print("Enter the number of assignments for " + StudentName + ": ");
+            int AssignmentNum = sc.nextInt();
             double totalScore = 0;
-            for (int j = 1; j <= numAssignments; j++) {
-                System.out.print("Enter score for assignment " + j + ": ");
-                double score = input.nextDouble();
+
+            for (int j = 0; j < AssignmentNum; j++) {
+                System.out.print("Enter score for assignment " + (j + 1) + ": ");
+                double score = sc.nextDouble();
                 totalScore += score;
             }
 
-            double averageScore = totalScore / numAssignments;
-            classTotal += averageScore;
-
-            if (averageScore > highestScore) {
-                highestScore = averageScore;
-            }
-            if (averageScore < lowestScore) {
-                lowestScore = averageScore;
-            }
-
+            double average = totalScore / AssignmentNum;
             char grade;
-            if (averageScore >= 90) {
+
+            if (average >= 90) {
                 grade = 'A';
-            } else if (averageScore >= 80) {
+            } else if (average >= 80) {
                 grade = 'B';
-            } else if (averageScore >= 70) {
+            } else if (average >= 70) {
                 grade = 'C';
-            } else if (averageScore >= 60) {
+            } else if (average >= 60) {
                 grade = 'D';
             } else {
                 grade = 'F';
             }
 
-            System.out.println("\n--- Student Information ---");
-            System.out.println("Name: " + studentName);
-            System.out.println("Average Score: " + averageScore);
-            System.out.println("Letter Grade: " + grade);
-            System.out.println();
+            sc.nextLine();
+            System.out.println("\n" + StudentName + " - Average: " + average + " - Grade: " + grade);
         }
 
-        double classAverage = classTotal / numStudents;
-        System.out.println("\n--- Class Summary ---");
-        System.out.println("Class Average: " + classAverage);
-        System.out.println("Highest Average Score: " + highestScore);
-        System.out.println("Lowest Average Score: " + lowestScore);
-
-        input.close();
+        sc.close();
     }
 }
