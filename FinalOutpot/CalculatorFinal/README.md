@@ -1,6 +1,7 @@
 Calculator Application
 A simple calculator application built using Java Swing for basic arithmetic operations.
 
+
 How to Run
 Compile the Application:
 javac CalculatorApp.java
